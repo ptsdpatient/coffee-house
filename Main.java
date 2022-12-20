@@ -1,7 +1,21 @@
 import java.util.Scanner;
 
 class iceCream{
-    String number,name,OrderName;
+    public void Bill(String orderName,String Name,String number,int amount){
+
+        System.out.println("\n\tClient Name :"+Name+"\n\tClient Phn :"+number+"\n\tDrink :"+orderName+"\n\tTotal amount :"+amount);
+    }
+    public int addonSet(int a,int amount){
+        switch (a) {
+            case 1 -> amount = milk[a - 1];
+            case 2 -> amount = cream[a - 1];
+            case 3 -> amount = syrup[a - 1];
+            default -> {
+            }
+        }
+        return amount;
+    }
+
     String[] product=new String[] {"Espresso","Cappuccino","Latte"};
     String[] addon=new String[] {"milk","cream","syrup","nothing"};
     int[] milk={60,80,100};
@@ -12,13 +26,15 @@ class iceCream{
 public class Main {
 
     public static void main(String[] args) {
-        int n=0,p=0,a=0,amount=0;
+        String OrderName = null;
+        String number,name;
+        int p,a,amount=0;
         iceCream obj1 = new iceCream();
         Scanner input = new Scanner(System.in);
         System.out.println("\n\tWelcome to the ice-cream parlour\n\t Please enter your name");
-        obj1.name=input.nextLine();
+        name=input.nextLine();
         System.out.println("\n\t Please enter your number");
-        obj1.number=input.nextLine();
+        number=input.nextLine();
         System.out.println("\n\t Here is our menu, enter the number before your desired product \n");
         for (int i =0;i<3;i++) {
             System.out.println("\t ["+(i+1)+"]"+obj1.product[i]);
@@ -31,49 +47,22 @@ public class Main {
         }
         a=input.nextInt();
         System.out.println("We have received your order, Please wait till we make your bill");
-        switch(p){
-            case 1: obj1.OrderName="Espresso"+obj1.addon[a-1];
-                    switch(a){
-                        case 1: amount = obj1.milk[a-1];
-                        break;
-                        case 2: amount = obj1.cream[a-1];
-                        break;
-                        case 3: amount = obj1.syrup[a-1];
-                        break;
-                        default:
-                        break;
-                    }
-            break;
-            case 2 :  obj1.OrderName="Cappuccino"+obj1.addon[a-1];
-                switch(a){
-                    case 1: amount = obj1.milk[a-1];
-                        break;
-                    case 2: amount = obj1.cream[a-1];
-                        break;
-                    case 3: amount = obj1.syrup[a-1];
-                        break;
-                    default:
-                        break;
-                }
-            break;
-            case 3: obj1.OrderName="Syrup"+obj1.addon[a-1];
-                switch(a){
-                    case 1: amount = obj1.milk[a-1];
-                        break;
-                    case 2: amount = obj1.cream[a-1];
-                        break;
-                    case 3: amount = obj1.syrup[a-1];
-                        break;
-                    default:
-                        break;
-                }
-
-            break;
-
-            default: System.out.println("please enter proper value");
-            break;
-
+        switch (p) {
+            case 1 -> {
+                OrderName = "Espresso-" + obj1.addon[a - 1];
+                amount=obj1.addonSet(a,0);
+            }
+            case 2 -> {
+                OrderName = "Cappuccino-" + obj1.addon[a - 1];
+                amount=obj1.addonSet(a,0);
+            }
+            case 3 -> {
+                OrderName = "Syrup-" + obj1.addon[a - 1];
+                amount=obj1.addonSet(a,0);
+            }
+            default ->{}
         }
+        obj1.Bill(OrderName,name,number,amount);
 
 
     }
