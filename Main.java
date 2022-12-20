@@ -45,7 +45,7 @@ public class Main {
         for(int i =0;i<4;i++){
         System.out.println("\t ["+(i+1)+"]"+obj1.addon[i]);
         }
-        a=input.nextInt();
+        do{a=input.nextInt();}while((a<0 || p>a));
         System.out.println("We have received your order, Please wait till we make your bill");
         switch (p) {
             case 1 -> {
@@ -57,7 +57,7 @@ public class Main {
                 amount=obj1.addonSet(a,0);
             }
             case 3 -> {
-                OrderName = "Syrup-" + obj1.addon[a - 1];
+                OrderName = "Latte-" + obj1.addon[a - 1];
                 amount=obj1.addonSet(a,0);
             }
             default ->{}
