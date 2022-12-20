@@ -12,7 +12,7 @@ class iceCream{
 public class Main {
 
     public static void main(String[] args) {
-        int n,p,a,amount;
+        int n=0,p=0,a=0,amount=0;
         iceCream obj1 = new iceCream();
         Scanner input = new Scanner(System.in);
         System.out.println("\n\tWelcome to the ice-cream parlour\n\t Please enter your name");
@@ -23,8 +23,8 @@ public class Main {
         for (int i =0;i<3;i++) {
             System.out.println("\t ["+(i+1)+"]"+obj1.product[i]);
         }
+        do{p=input.nextInt();}while(p<0 && p>3);
 
-        p=input.nextInt();
         System.out.println("\t What would you like as an addon?");
         for(int i =0;i<4;i++){
         System.out.println("\t ["+(i+1)+"]"+obj1.addon[i]);
@@ -32,8 +32,47 @@ public class Main {
         a=input.nextInt();
         System.out.println("We have received your order, Please wait till we make your bill");
         switch(p){
-            case 1: obj1.Order;
-                    break;
+            case 1: obj1.OrderName="Espresso"+obj1.addon[a-1];
+                    switch(a){
+                        case 1: amount = obj1.milk[a-1];
+                        break;
+                        case 2: amount = obj1.cream[a-1];
+                        break;
+                        case 3: amount = obj1.syrup[a-1];
+                        break;
+                        default:
+                        break;
+                    }
+            break;
+            case 2 :  obj1.OrderName="Cappuccino"+obj1.addon[a-1];
+                switch(a){
+                    case 1: amount = obj1.milk[a-1];
+                        break;
+                    case 2: amount = obj1.cream[a-1];
+                        break;
+                    case 3: amount = obj1.syrup[a-1];
+                        break;
+                    default:
+                        break;
+                }
+            break;
+            case 3: obj1.OrderName="Syrup"+obj1.addon[a-1];
+                switch(a){
+                    case 1: amount = obj1.milk[a-1];
+                        break;
+                    case 2: amount = obj1.cream[a-1];
+                        break;
+                    case 3: amount = obj1.syrup[a-1];
+                        break;
+                    default:
+                        break;
+                }
+
+            break;
+
+            default: System.out.println("please enter proper value");
+            break;
+
         }
 
 
