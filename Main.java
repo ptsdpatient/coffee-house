@@ -23,7 +23,7 @@ public class Main {
         for (int i =0;i<3;i++) {
             System.out.println("\t ["+(i+1)+"]"+obj1.product[i]);
         }
-        do{p=input.nextInt();}while(p<0 && p>3);
+        do{p=input.nextInt();}while((p<0 || p>3));
 
         System.out.println("\t What would you like as an addon?");
         for(int i =0;i<4;i++){
